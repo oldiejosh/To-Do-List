@@ -2,7 +2,7 @@ import datetime
 now = datetime.datetime.now()
 
 def greetings():
-    print(f"Hello, the time is {now.strftime("%H:%M")}, and the date is {now.date()}")
+    print(f"Hello, the time is {now.strftime("%H:%M")}, on the date of {now.date()}")
 
 
 def add_task():
