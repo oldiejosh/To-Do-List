@@ -7,18 +7,23 @@ def greetings():
 
 def add_task():
     to_do = []
-    task = input("Enter the task:")
-    to_do.append(task)
+    while True:
+        task_input = input("Enter task(s) (comma seperated, or type 'done' to finish):")
+        if task_input.lower() == "done":
+            break
+        
+        tasks = [t.strip() for t in task_input.split(",") if t.strip()]
+        to_do.extend(tasks)
+    return to_do
 
 
 def view_task(tasks):
-    if len(tasks == 0):
+    if len(tasks) == 0:
         print("Your list is empty")
     else:
         for i, task in enumerate(tasks, 1):
             print(f"{i}. {task}")
-            print("")
-            print("End of list.")
+        
 
 
     
@@ -26,9 +31,12 @@ def view_task(tasks):
 def main():
     greetings()
     print("")
-    add_task()
+    tasks = add_task()
     print("")
-    view_task()
+    print("To-do:")
+    view_task(tasks)
+    print("")
+    print("End of list.")
 
 
 main()
